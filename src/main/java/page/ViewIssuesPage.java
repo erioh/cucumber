@@ -13,7 +13,7 @@ import java.util.List;
 
 public class ViewIssuesPage {
 
-    ShortReportWebElementExtractor extractor = new ShortReportWebElementExtractor();
+    private ShortReportWebElementExtractor extractor = new ShortReportWebElementExtractor();
 
     @FindBy(xpath = "//table[@id='buglist']/tbody/tr[not(@class='spacer' or @class='row-category')][@bgcolor]")
     private List<WebElement> reportList;
