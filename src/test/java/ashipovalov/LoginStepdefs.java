@@ -6,7 +6,7 @@ import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import factory.DriverContainer;
+import container.DriverContainer;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import page.LoginPage;
@@ -25,9 +25,9 @@ public class LoginStepdefs {
         driver.get("http://shipovalov.net/");
     }
 
-//    @After
+    @After
     public void after() {
-        DriverContainer.getDriver().close();
+        driver.close();
     }
     @Given("^User is on the Login page$")
     public void user_is_on_the_Login_page() {
