@@ -8,8 +8,10 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         plugin = {"pretty"},
-        snippets = SnippetType.CAMELCASE,
-        glue = "shouty"
+        snippets = SnippetType.CAMELCASE
+        ,glue = "shouty"
+//        ,tags = {"@ext-smoke", "@smoke"}
+//        ,features="./src/test/resources/shouty/shout.feature"
 )
 public class RunCukesTest {
 }
