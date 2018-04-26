@@ -10,14 +10,14 @@ import container.DriverContainer;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import page.LoginPage;
-import page.MainPage;
+import page.HomePage;
 
 import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertTrue;
 
 public class LoginStepdefs {
     private LoginPage loginPage;
-    private MainPage mainPage;
+    private HomePage homePage;
     private WebDriver driver;
     @Before
     public void before(){
@@ -32,7 +32,6 @@ public class LoginStepdefs {
     @Given("^User is on the Login page$")
     public void user_is_on_the_Login_page() {
         loginPage = PageFactory.initElements(driver, LoginPage.class);
-//        loginPage.open();
     }
 
     @When("^User enter \"([^\"]*)\" into Username field$")
@@ -47,12 +46,12 @@ public class LoginStepdefs {
 
     @When("^Push Login button$")
     public void push_button() {
-        mainPage = loginPage.clickLoginButton();
+        homePage = loginPage.clickLoginButton();
     }
 
     @Then("^User is logged in as \"([^\"]*)\"$")
     public void user_is_logged_in_as(String username) {
-        assertEquals(username, mainPage.loggedAs()) ;
+        assertEquals(username, homePage.loggedAs()) ;
     }
 
     @Then("^Error message appears$")

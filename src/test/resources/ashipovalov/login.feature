@@ -1,4 +1,4 @@
-Feature: Login
+Feature: Login  and Create Project
 
   Scenario: Valid scenario
     Given User is on the Login page
@@ -22,3 +22,10 @@ Feature: Login
       |          |          |
       | q        | q        |
       | !        | @        |
+
+    Scenario: As an Administrator I want to create new project
+      Given User is on the HomePage logged as user "student" with password "luxoft"
+      When User click Report Issue link
+      And User fill all mandatory fields
+      And User click Submit Report Button
+      Then Report is submitted successfully
