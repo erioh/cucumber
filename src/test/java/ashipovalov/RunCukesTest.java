@@ -10,6 +10,7 @@ import org.junit.runner.RunWith;
         plugin = {"pretty"},
         snippets = SnippetType.CAMELCASE
         ,glue = "ashipovalov"
+        ,strict = true
 //        ,tags = {"@ext-smoke", "@smoke"}
 //        ,features="./src/test/resources/shouty/shout.feature"
 )

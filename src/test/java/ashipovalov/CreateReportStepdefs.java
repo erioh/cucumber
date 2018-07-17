@@ -8,6 +8,7 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import entity.Report;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
 import page.HomePage;
 import page.LoginPage;
@@ -16,28 +17,28 @@ import page.ViewIssuesPage;
 
 import static junit.framework.TestCase.assertTrue;
 
-public class CreateReportStepdefs {
+public class CreateReportStepdefs  {
     private HomePage homePage;
     private NewReportPage newReportPage;
     private ViewIssuesPage viewIssuesPage;
-    private WebDriver driver;
     private Report report;
-
+    DriverContainer container;
     @Before
-    public void before() {
-        report = new Report();
-        driver = DriverContainer.getDriver();
-        driver.get("http://shipovalov.net/");
+    public void before(){
+        container = DriverContainer.getInstance();
+        container.get("http://shipovalov.net/");
     }
 
     @After
     public void after() {
-        driver.close();
+        container.manage().deleteAllCookies();
+        container.get("http://shipovalov.net/");
+        container.clickToDie();
     }
 
     @Given("^User is on the HomePage logged as user \"([^\"]*)\" with password \"([^\"]*)\"$")
     public void user_is_on_the_HomePage_logged_as_user_with_password(String username, String password) {
-        homePage = PageFactory.initElements(driver, LoginPage.class)
+        homePage = PageFactory.initElements(container.getDriver(), LoginPage.class)
                 .setUsername(username).setPassword(password).clickLoginButton();
     }
 
@@ -48,6 +49,7 @@ public class CreateReportStepdefs {
 
     @When("^User fill all mandatory fields$")
     public void user_fill_all_mandatory_fields() {
+        report = new Report();
         report.setSummary("Summary");
         report.setCategory("someCategory");
         report.setDescription("Some Description");

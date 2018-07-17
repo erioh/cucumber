@@ -41,7 +41,6 @@ public class LoginPage {
         passwordField.sendKeys(password);
         return this;
     }
-
     public boolean isErrorMessageAppears() {
         boolean result = true;
         try {
